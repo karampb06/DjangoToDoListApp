@@ -1,15 +1,10 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "myproject/wsgi.py",
-      "use": "@vercel/python"
+  "functions": {
+    "myproject/wsgi.py": {
+      "runtime": "python3.9"
     }
-  ],
+  },
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "myproject/wsgi.py"
-    }
+    { "src": "/(.*)", "dest": "myproject/wsgi.py" }
   ]
 }
