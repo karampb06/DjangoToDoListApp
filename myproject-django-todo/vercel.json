@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "myproject/wsgi.py",
@@ -11,8 +12,26 @@
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "myproject/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "VERCEL": "1",
+    "DEBUG": "False"
+  },
+  "build": {
+    "env": {
+      "PYTHON_VERSION": "3.9"
+    }
+  },
+  "functions": {
+    "myproject/wsgi.py": {
+      "maxDuration": 30
+    }
+  }
 }
