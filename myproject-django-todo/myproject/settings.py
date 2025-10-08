@@ -30,7 +30,15 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = ['*']
  
 # Check environment and configure accordingly
-if 'VERCEL' in os.environ:
+if 'RENDER' in os.environ:
+    # Render.com production deployment
+    DEBUG = False
+    ALLOWED_HOSTS = [
+        '.onrender.com',
+        'localhost',
+        '127.0.0.1'
+    ]
+elif 'VERCEL' in os.environ:
     # Vercel production deployment
     #DEBUG = False
     DEBUG = os.environ.get('DEBUG', 'False') == 'True'
