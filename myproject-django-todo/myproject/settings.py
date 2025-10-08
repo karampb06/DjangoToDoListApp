@@ -172,14 +172,11 @@ elif 'RDS_DB_NAME' in os.environ:
         }
     }
 else:
+    # Use SQLite for local development
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'todoapp_db',
-            'USER': 'postgres',
-            'PASSWORD': 'Cellfone01',  # This is the password for your local postgres pgAdmin
-            'HOST': '',  # Localhost is empty
-            'PORT': '',  # Assumes default as 5432
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
